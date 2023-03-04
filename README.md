@@ -3,6 +3,8 @@
 Abaixo eu trago alguns códigos de masks que podem te ajudar bastante.
 
 ## Mask para Dinheiro (Reais R$) mascaraDinheiro()
+<details>
+  <summary>Ver código</summary>
 ```
 function mascaraDinheiro(valor) {
     valor = valor.replace(/\D/g, ""); // Remove tudo o que não é dígito
@@ -23,3 +25,4 @@ function mascaraDinheiro(valor) {
   }
 
 ```
+</details>
