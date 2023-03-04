@@ -19,7 +19,7 @@ function mascaraDinheiro(valor) {
       valor = "0," + valor.padStart(2, "0");
     }
 
-    return "R$ "+valor;
+    return valor;
   }
 
 ```
