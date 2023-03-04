@@ -1,6 +1,6 @@
 # Utilidades JS
 
-Abaixo eu trago alguns códigos de masks que podem te ajudar bastante.
+Abaixo eu trago alguns códigos en JS que podem ser uma mão na roda.
 
 ## Mask para formatar números semelhante ao do PHP - number_format()
 <details>
