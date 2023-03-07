@@ -2,6 +2,28 @@
 
 Abaixo eu trago alguns códigos en JS que podem ser uma mão na roda.
 
+## Mask para CPF e CNPJ (CPFCNPJ) mascaraCPFCNPJ()
+<details>
+  <summary>Ver código</summary>
+  
+```js
+function mascaraCPFCNPJ(valor) {
+  valor = valor.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+  if (valor.length <= 11) { // Se o valor tiver até 11 caracteres, trata-se de um CPF
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+    valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  } else { // Senão, trata-se de um CNPJ
+    valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+    valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+  }
+  return valor;
+}
+```
+</details>
+
 ## Mask para formatar números semelhante ao do PHP - number_format()
 <details>
   <summary>Ver código</summary>
