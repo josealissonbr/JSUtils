@@ -1,3 +1,18 @@
+function mascaraCPFCNPJ(valor) {
+  valor = valor.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+  if (valor.length <= 11) { // Se o valor tiver até 11 caracteres, trata-se de um CPF
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+    valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+  } else { // Senão, trata-se de um CNPJ
+    valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+    valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+  }
+  return valor;
+}
+
 function number_format(numero, decimais, separadorDecimal, separadorMilhar) {
     var n = numero,
         c = isNaN(decimais = Math.abs(decimais)) ? 2 : decimais,
