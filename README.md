@@ -1,6 +1,6 @@
 # Utilidades JS
 
-Abaixo eu trago alguns códigos en JS que podem ser uma mão na roda.
+Abaixo eu trago alguns códigos em JS que podem ser uma mão na roda.
 
 ## Filtro para Campo de texto (Input) limparString()
 <details>
