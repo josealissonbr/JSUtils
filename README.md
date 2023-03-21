@@ -2,6 +2,34 @@
 
 Abaixo eu trago alguns códigos en JS que podem ser uma mão na roda.
 
+## Filtro para Campo de texto (Input) limparString()
+<details>
+  <summary>Ver código</summary>
+  
+```js
+function limparString(input) {
+    // Substitui caracteres com acentos por caracteres sem acentos
+    const mapaAcentosHex = {
+        a: /[\xE0-\xE6]/g,
+        e: /[\xE8-\xEB]/g,
+        i: /[\xEC-\xEF]/g,
+        o: /[\xF2-\xF6]/g,
+        u: /[\xF9-\xFC]/g,
+        c: /\xE7/g,
+        n: /\xF1/g,
+    };
+
+    for (let letra in mapaAcentosHex) {
+        const expressaoRegular = mapaAcentosHex[letra];
+        input = input.replace(expressaoRegular, letra);
+    }
+
+    // Substitui todos os caracteres especiais e espaços por vazio
+    return input.replace(/[^\w\s]/gi, '').replace(/\s+/g, '');
+}
+```
+</details>
+
 ## Mask para CPF e CNPJ (CPFCNPJ) mascaraCPFCNPJ()
 <details>
   <summary>Ver código</summary>
