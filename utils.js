@@ -1,3 +1,21 @@
+function aplicarMascaraTelefoneCelular(telefoneCelular, adicionarPrefixo9 = true) {
+  const regexTelefoneCelular = adicionarPrefixo9 ? /^(\d{0,2})?(\d{0,5})?(\d{0,4})?(\d{0,4})?$/ : /^(\d{0,2})?(\d{0,4})?(\d{0,4})?$/;
+
+  const input = telefoneCelular.replace(/\D/g, '');
+  const matches = input.match(regexTelefoneCelular);
+  let telefoneCelularFormatado = '';
+
+  if (matches && matches[0]) {
+    telefoneCelularFormatado = matches[1] ? `(${matches[1]}` : '';
+    telefoneCelularFormatado += matches[2] ? `) ${matches[2]}` : '';
+    telefoneCelularFormatado += matches[3] ? `-${matches[3]}` : '';
+    telefoneCelularFormatado += matches[4] ? `-${matches[4]}` : '';
+  }
+
+  return telefoneCelularFormatado;
+}
+
+
 function limparString(input) {
     // Substitui caracteres com acentos por caracteres sem acentos
     const mapaAcentosHex = {
