@@ -1,4 +1,4 @@
-function aplicarMascaraTelefoneCelular(telefoneCelular, adicionarPrefixo9 = true) {
+function mascaraTelefoneCelular(telefoneCelular, adicionarPrefixo9 = true) {
   const regexTelefoneCelular = adicionarPrefixo9 ? /^(\d{0,2})?(\d{0,5})?(\d{0,4})?(\d{0,4})?$/ : /^(\d{0,2})?(\d{0,4})?(\d{0,4})?$/;
 
   const input = telefoneCelular.replace(/\D/g, '');
