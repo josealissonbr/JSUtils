@@ -1,3 +1,18 @@
+function mascaraData(valor) {
+  const value = valor.replace(/\D/g, "");
+  const day = value.slice(0, 2);
+  const month = value.slice(2, 4);
+  const year = value.slice(4, 8);
+
+  if (value.length > 2 && value.length <= 4) {
+    return `${day}/${month}`;
+  } else if (value.length > 4) {
+    return `${day}/${month}/${year}`;
+  } else {
+    return value;
+  }
+}
+
 function mascaraTelefoneCelular(telefoneCelular, adicionarPrefixo9 = true) {
   const regexTelefoneCelular = adicionarPrefixo9 ? /^(\d{0,2})?(\d{0,5})?(\d{0,4})?(\d{0,4})?$/ : /^(\d{0,2})?(\d{0,4})?(\d{0,4})?$/;
 
