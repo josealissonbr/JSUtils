@@ -1,3 +1,18 @@
+function formatCEP(cep) {
+  // Remove tudo que não for dígito
+  cep = cep.replace(/\D/g, '');
+
+  // Adiciona zeros à esquerda até que o CEP tenha 8 dígitos
+  while (cep.length < 8) {
+    cep = '0' + cep;
+  }
+
+  // Formata o CEP com hífen
+  cep = cep.substring(0, 5) + '-' + cep.substring(5);
+
+  return cep;
+}
+
 function mascaraData(valor) {
   const value = valor.replace(/\D/g, "");
   const day = value.slice(0, 2);
