@@ -43,6 +43,15 @@ function formatCEP(cep) {
   return cep;
 }
 
+function mascaraMesAno(data) {
+    if (data.length === 2) {
+        data += '/';
+    } else if (data.length > 2 && data.length < 7) {
+        data = data.substr(0, 2) + '/' + data.substr(2);
+    }
+    return data;
+}
+
 function mascaraData(valor) {
   const value = valor.replace(/\D/g, "");
   const day = value.slice(0, 2);
