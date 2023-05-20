@@ -1,3 +1,8 @@
+function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
+}
+
 function toFixedTrunc(x, n) {
     x = toFixed(x)
 
