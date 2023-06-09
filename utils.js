@@ -1,3 +1,11 @@
+function timestampToDate(timestamp) {
+  const date = new Date(timestamp * 1000); // Multiplica por 1000 para obter milissegundos
+  const dateString = date.toLocaleDateString(); // Retorna a representação da data
+  const timeString = date.toLocaleTimeString(); // Retorna a representação da hora
+  return dateString + ' ' + timeString; // Combina a data e a hora em uma única string
+}
+
+
 function capitalize(s)
 {
     return s[0].toUpperCase() + s.slice(1);
