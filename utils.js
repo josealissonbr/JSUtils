@@ -1,13 +1,12 @@
 function timestampToDate(timestamp) {
-  const date = new Date(timestamp * 1000); // Multiplica por 1000 para obter milissegundos
-  const dateString = date.toLocaleDateString(); // Retorna a representação da data
-  const timeString = date.toLocaleTimeString(); // Retorna a representação da hora
-  return dateString + ' ' + timeString; // Combina a data e a hora em uma única string
+    const date = new Date(timestamp * 1000); // Multiplica por 1000 para obter milissegundos
+    const dateString = date.toLocaleDateString(); // Retorna a representação da data
+    const timeString = date.toLocaleTimeString(); // Retorna a representação da hora
+    return dateString + ' ' + timeString; // Combina a data e a hora em uma única string
 }
 
 
-function capitalize(s)
-{
+function capitalize(s) {
     return s[0].toUpperCase() + s.slice(1);
 }
 
@@ -18,42 +17,42 @@ function toFixedTrunc(x, n) {
     const v = (typeof x === 'string' ? x : x.toString()).split('.');
     if (n <= 0) return v[0];
     let f = v[1] || '';
-    if (f.length > n) return `${v[0]}.${f.substr(0,n)}`;
+    if (f.length > n) return `${v[0]}.${f.substr(0, n)}`;
     while (f.length < n) f += '0';
     return `${v[0]}.${f}`
 }
 
 function toFixed(x) {
     if (Math.abs(x) < 1.0) {
-      let e = parseInt(x.toString().split('e-')[1]);
-      if (e) {
-          x *= Math.pow(10,e-1);
-          x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
-      }
+        let e = parseInt(x.toString().split('e-')[1]);
+        if (e) {
+            x *= Math.pow(10, e - 1);
+            x = '0.' + (new Array(e)).join('0') + x.toString().substring(2);
+        }
     } else {
-      let e = parseInt(x.toString().split('+')[1]);
-      if (e > 20) {
-          e -= 20;
-          x /= Math.pow(10,e);
-          x += (new Array(e+1)).join('0');
-      }
+        let e = parseInt(x.toString().split('+')[1]);
+        if (e > 20) {
+            e -= 20;
+            x /= Math.pow(10, e);
+            x += (new Array(e + 1)).join('0');
+        }
     }
     return x;
 }
 
 function formatCEP(cep) {
-  // Remove tudo que não for dígito
-  cep = cep.replace(/\D/g, '');
+    // Remove tudo que não for dígito
+    cep = cep.replace(/\D/g, '');
 
-  // Adiciona zeros à esquerda até que o CEP tenha 8 dígitos
-  while (cep.length < 8) {
-    cep = '0' + cep;
-  }
+    // Adiciona zeros à esquerda até que o CEP tenha 8 dígitos
+    while (cep.length < 8) {
+        cep = '0' + cep;
+    }
 
-  // Formata o CEP com hífen
-  cep = cep.substring(0, 5) + '-' + cep.substring(5);
+    // Formata o CEP com hífen
+    cep = cep.substring(0, 5) + '-' + cep.substring(5);
 
-  return cep;
+    return cep;
 }
 
 function mascaraMesAno(data) {
@@ -66,35 +65,35 @@ function mascaraMesAno(data) {
 }
 
 function mascaraData(valor) {
-  const value = valor.replace(/\D/g, "");
-  const day = value.slice(0, 2);
-  const month = value.slice(2, 4);
-  const year = value.slice(4, 8);
+    const value = valor.replace(/\D/g, "");
+    const day = value.slice(0, 2);
+    const month = value.slice(2, 4);
+    const year = value.slice(4, 8);
 
-  if (value.length > 2 && value.length <= 4) {
-    return `${day}/${month}`;
-  } else if (value.length > 4) {
-    return `${day}/${month}/${year}`;
-  } else {
-    return value;
-  }
+    if (value.length > 2 && value.length <= 4) {
+        return `${day}/${month}`;
+    } else if (value.length > 4) {
+        return `${day}/${month}/${year}`;
+    } else {
+        return value;
+    }
 }
 
 function mascaraTelefoneCelular(telefoneCelular, adicionarPrefixo9 = true) {
-  const regexTelefoneCelular = adicionarPrefixo9 ? /^(\d{0,2})?(\d{0,5})?(\d{0,4})?(\d{0,4})?$/ : /^(\d{0,2})?(\d{0,4})?(\d{0,4})?$/;
+    const regexTelefoneCelular = adicionarPrefixo9 ? /^(\d{0,2})?(\d{0,5})?(\d{0,4})?(\d{0,4})?$/ : /^(\d{0,2})?(\d{0,4})?(\d{0,4})?$/;
 
-  const input = telefoneCelular.replace(/\D/g, '');
-  const matches = input.match(regexTelefoneCelular);
-  let telefoneCelularFormatado = '';
+    const input = telefoneCelular.replace(/\D/g, '');
+    const matches = input.match(regexTelefoneCelular);
+    let telefoneCelularFormatado = '';
 
-  if (matches && matches[0]) {
-    telefoneCelularFormatado = matches[1] ? `(${matches[1]}` : '';
-    telefoneCelularFormatado += matches[2] ? `) ${matches[2]}` : '';
-    telefoneCelularFormatado += matches[3] ? `-${matches[3]}` : '';
-    telefoneCelularFormatado += matches[4] ? `-${matches[4]}` : '';
-  }
+    if (matches && matches[0]) {
+        telefoneCelularFormatado = matches[1] ? `(${matches[1]}` : '';
+        telefoneCelularFormatado += matches[2] ? `) ${matches[2]}` : '';
+        telefoneCelularFormatado += matches[3] ? `-${matches[3]}` : '';
+        telefoneCelularFormatado += matches[4] ? `-${matches[4]}` : '';
+    }
 
-  return telefoneCelularFormatado;
+    return telefoneCelularFormatado;
 }
 
 
@@ -122,30 +121,30 @@ function limparString(input) {
 function mascaraCPFCNPJ(valor) {
     valor = valor.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
     if (valor.length <= 11) { // Se o valor tiver até 11 caracteres, trata-se de um CPF
-      valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-      valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-      valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
     } else { // Senão, trata-se de um CNPJ
-      valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
-      valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-      valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
-      valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+        valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+        valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+        valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+        valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
     }
     return valor;
 }
 function mascaraCPFCNPJ(valor) {
-  valor = valor.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
-  if (valor.length <= 11) { // Se o valor tiver até 11 caracteres, trata-se de um CPF
-    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-    valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
-    valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-  } else { // Senão, trata-se de um CNPJ
-    valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
-    valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
-    valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
-    valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
-  }
-  return valor;
+    valor = valor.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+    if (valor.length <= 11) { // Se o valor tiver até 11 caracteres, trata-se de um CPF
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+        valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    } else { // Senão, trata-se de um CNPJ
+        valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
+        valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+        valor = valor.replace(/\.(\d{3})(\d)/, '.$1/$2');
+        valor = valor.replace(/(\d{4})(\d)/, '$1-$2');
+    }
+    return valor;
 }
 
 function number_format(numero, decimais, separadorDecimal, separadorMilhar) {
@@ -170,10 +169,10 @@ function mascaraDinheiro(valor) {
 
     // Adiciona zero na unidade se o valor tiver somente os centavos
     if (/^[1-9]$/.test(valor)) {
-      valor = "0,0" + valor;
+        valor = "0,0" + valor;
     } else if (/^\d{1,2}$/.test(valor)) {
-      valor = "0," + valor.padStart(2, "0");
+        valor = "0," + valor.padStart(2, "0");
     }
 
     return valor;
-  }
+}
