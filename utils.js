@@ -118,6 +118,13 @@ function limparString(input) {
     return input.replace(/[^\w\s]/gi, '').replace(/\s+/g, '');
 }
 
+function limitarString(str, limite) {
+    if (str.length > limite) {
+        return str.slice(0, limite - 3) + '...';
+    }
+    return str;
+}
+
 function mascaraCPFCNPJ(valor) {
     valor = valor.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
     if (valor.length <= 11) { // Se o valor tiver até 11 caracteres, trata-se de um CPF
