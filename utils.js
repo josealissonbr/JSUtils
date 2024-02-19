@@ -1,3 +1,6 @@
+// ## Repositório original ##
+// https://github.com/josealissonbr/JSUtils
+
 function timestampToDate(timestamp) {
     const date = new Date(timestamp * 1000); // Multiplica por 1000 para obter milissegundos
     const dateString = date.toLocaleDateString(); // Retorna a representação da data
